@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('certificate_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('type');
             $table->json('profile');
             $table->string('path');
             $table->timestamps();

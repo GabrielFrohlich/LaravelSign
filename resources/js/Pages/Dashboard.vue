@@ -1,6 +1,16 @@
 <script setup lang="ts">
+import CustomButton from '@/Components/CustomButton.vue';
+import CertificateProfile from '@/Components/Forms/CertificateProfile.vue';
+import Modal from '@/Components/Modal.vue';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { ref } from 'vue';
+
+const showCertificateProfileModal = ref(false)
+
+function onclick(){
+    showCertificateProfileModal.value = true
+}
 </script>
 
 <template>
@@ -12,11 +22,15 @@ import { Head } from '@inertiajs/vue3';
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="container mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">You're logged in!</div>
+                    <CustomButton :on-click=onclick>Click me!</CustomButton>
                 </div>
             </div>
         </div>
+    <Modal :show="showCertificateProfileModal">
+        <CertificateProfile></CertificateProfile>
+    </Modal>
     </AuthenticatedLayout>
 </template>
